@@ -16,12 +16,19 @@ const input = ( props ) => {
                 className={inputClasses.join(' ')}
                 {...props.elementConfig}
                 value={props.value}
-                onChange={props.changed}/>;
+                onChange={props.changed} />;
+            break;
+        case ( 'textarea' ):
+            inputElement = <textarea
+                className={inputClasses.join(' ')}
+                {...props.elementConfig}
+                value={props.value}
+                onChange={props.changed} />;
             break;
         case ( 'select' ):
             inputElement = (
                 <select
-                    className={inputClasses}
+                    className={inputClasses.join(' ')}
                     value={props.value}
                     onChange={props.changed}>
                     {props.elementConfig.options.map(option => (
@@ -32,19 +39,12 @@ const input = ( props ) => {
                 </select>
             );
             break;
-        case ( 'textarea' ):
-            inputElement = <textarea
-                className={inputClasses}
-                {...props.elementConfig}
-                value={props.value}
-                onChange={props.changed}/>;
-            break;
         default:
             inputElement = <input
-                className={inputClasses}
+                className={inputClasses.join(' ')}
                 {...props.elementConfig}
                 value={props.value}
-                onChange={props.changed}/>;
+                onChange={props.changed} />;
     }
 
     return (
@@ -53,6 +53,7 @@ const input = ( props ) => {
             {inputElement}
         </div>
     );
-}
+
+};
 
 export default input;
